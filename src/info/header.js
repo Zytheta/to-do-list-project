@@ -30,9 +30,18 @@ function populateHeader(headerInfo) {
     ["Archived Tasks"]
   );
 
+  const headerBanner = createElement(
+    "div",
+    {
+      id: "header-banner",
+    },
+    ["Chris's To-Do List"]
+  );
+
   headerInfo.appendChild(homeBtn);
   headerInfo.appendChild(importantBtn);
   headerInfo.appendChild(historyBtn);
+  headerInfo.appendChild(headerBanner);
 }
 
 export default populateHeader;

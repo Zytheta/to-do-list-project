@@ -99,6 +99,22 @@ footer {
   background-color: #0b60b0;
 }
 
+.header-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 6vw;
+  margin-left: 2vw;
+}
+
+#header-banner {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  font-size: 3rem;
+  padding-left: 2ch;
+}
+
 .main-wrapper {
   display: flex;
 }

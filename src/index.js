@@ -4,6 +4,7 @@ import "./style.css";
 import createElement from "./info/createElement.js";
 import populateHeader from "./info/header.js";
 import populateFooter from "./info/footer.js";
+import loadMainContent from "./info/mainContent.js";
 
 if (process.env.NODE_ENV !== "production") {
   console.log("Looks like we are in development mode!");
@@ -18,6 +19,7 @@ const toDoList = (function () {
   function init() {
     populateHeader(headerInfo);
     populateFooter(footerInfo);
+    loadMainContent(mainInfo);
   }
 
   init();
