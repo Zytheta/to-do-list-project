@@ -1,6 +1,6 @@
 // footer information
 
-import createElement from "./createElement.js";
+import createElement from "../misc-functions/createElement.js";
 
 function populateFooter(footerInfo) {
   const favInfo = createElement(

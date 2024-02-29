@@ -1,7 +1,7 @@
 // Keeps track of the main content within the main-content div
 
-import createElement from "./createElement.js";
-import makeNewToDo from "./createToDo.js";
+import createElement from "../misc-functions/createElement.js";
+import ToDo from "../to-do/createToDo.js";
 
 function loadMainContent(mainInfo) {
   const newToDoBtn = createElement(
@@ -14,7 +14,7 @@ function loadMainContent(mainInfo) {
 
   newToDoBtn.addEventListener("click", function () {
     // Show the form when the button is clicked
-    makeNewToDo();
+    ToDo.makeNewToDo();
   });
 
   mainInfo.appendChild(newToDoBtn);

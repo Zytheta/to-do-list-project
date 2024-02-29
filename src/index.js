@@ -1,10 +1,10 @@
 // index.js
 
 import "./style.css";
-import createElement from "./info/createElement.js";
-import populateHeader from "./info/header.js";
-import populateFooter from "./info/footer.js";
-import loadMainContent from "./info/mainContent.js";
+import createElement from "./code/misc-functions/createElement.js";
+import populateHeader from "./code/page-layout/header.js";
+import populateFooter from "./code/page-layout/footer.js";
+import loadMainContent from "./code/page-layout/mainContent.js";
 
 if (process.env.NODE_ENV !== "production") {
   console.log("Looks like we are in development mode!");

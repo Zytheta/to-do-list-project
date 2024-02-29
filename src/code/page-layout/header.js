@@ -1,6 +1,6 @@
 // header information
 
-import createElement from "./createElement.js";
+import createElement from "../misc-functions/createElement.js";
 
 function populateHeader(headerInfo) {
   const homeBtn = createElement(

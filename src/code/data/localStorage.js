@@ -1,6 +1,6 @@
 // This module controls the local storage in the web page
 
-import createElement from "./createElement.js"
+import createElement from "./misc-functions/createElement.js";
 import { format } from date-fns
 
 function addToMemory () {
