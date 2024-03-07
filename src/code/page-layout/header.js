@@ -16,9 +16,9 @@ function populateHeader(headerInfo) {
     "button",
     {
       class: "header-button",
-      id: "important-button",
+      id: "urgent-button",
     },
-    ["Important Tasks"]
+    ["Urgent Tasks"]
   );
 
   const historyBtn = createElement(

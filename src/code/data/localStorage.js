@@ -1,12 +1,25 @@
 // This module controls the local storage in the web page
 
-import createElement from "./misc-functions/createElement.js";
-import { format } from date-fns
+const localStorageKey = "toDoItems";
 
-function addToMemory () {
-    const currentDate = new Date();
-    const formattedDate = format(currentDate, "MMMM dd, yyyy")
-    console.log(formattedDate)
+export function getToDoItems() {
+  const storedData = localStorage.getItem(localStorageKey);
+  return storedData ? JSON.parse(storedData) : [];
+}
 
-    
+export function saveToDoItem(toDoItem) {
+  const storedData = getToDoItems();
+  const newItem = { toDo: toDoItem };
+  storedData.push(newItem);
+  localStorage.setItem(localStorageKey, JSON.stringify(storedData));
+}
+
+export function deleteToDoItem(index) {
+  const storedData = getToDoItems();
+  storedData.splice(index, 1);
+  localStorage.setItem(localStorageKey, JSON.stringify(storedData));
+}
+
+export function deleteToDoList() {
+  localStorage.clear();
 }
