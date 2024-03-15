@@ -2,8 +2,10 @@
 
 import createElement from "../misc-functions/createElement.js";
 import displayError from "../misc-functions/displayError.js";
+import { saveToDoItem } from "../data/localStorage.js";
+import ToDo from "./createToDo.js";
 
-export function assembleToDoForm() {
+export function assembleToDoForm(newToDoBtn) {
   const toDoForm = createElement("form", {
     class: "to-do-form",
   });
@@ -12,7 +14,7 @@ export function assembleToDoForm() {
 
   appendToDoFormEntries(toDoForm, entries);
 
-  const buttons = createToDoFormButtons(toDoForm);
+  const buttons = createToDoFormButtons(toDoForm, newToDoBtn);
 
   appendToDoFormButtons(toDoForm, buttons);
 
@@ -31,7 +33,7 @@ export function assembleToDoForm() {
   };
 }
 
-export function createToDoFormEntries() {
+function createToDoFormEntries() {
   const toDoTitle = createElement("input", {
     type: "text",
     placeholder: "To-do Title",
@@ -104,13 +106,13 @@ export function createToDoFormEntries() {
   ];
 }
 
-export function appendToDoFormEntries(toDoForm, entries) {
+function appendToDoFormEntries(toDoForm, entries) {
   entries.forEach((entry) => {
     toDoForm.appendChild(entry);
   });
 }
 
-export function createToDoFormButtons(toDoForm) {
+function createToDoFormButtons(toDoForm, newToDoBtn) {
   const saveBtn = createElement(
     "button",
     {
@@ -121,7 +123,7 @@ export function createToDoFormButtons(toDoForm) {
   );
 
   saveBtn.addEventListener("click", function (event) {
-    event.preventDefault(); // Prevent the default form submission behavior
+    event.preventDefault();
     const entries = toDoForm.querySelectorAll(".entry-form");
 
     const title = entries[0].value.trim();
@@ -180,13 +182,21 @@ export function createToDoFormButtons(toDoForm) {
       priority: priority,
     };
 
-    // saveToDoItem(values);
-
     toDoForm.reset();
-    console.log("Current to-do values are: ", values);
+    // console.log("Current to-do values are: ", values);
     toDoForm.style.display = "none";
+    newToDoBtn.style.display = "flex";
 
-    return values;
+    // Create a new to-do item and add it to local storage
+    const newToDoItem = new ToDo(
+      values.title,
+      values.description,
+      ToDo.addDate(),
+      `${values.dueDateMonth}/${values.dueDateDay}/${values.dueDateYear}`,
+      values.priority
+    );
+
+    return saveToDoItem(newToDoItem);
   });
 
   const resetBtn = createElement(
@@ -214,12 +224,13 @@ export function createToDoFormButtons(toDoForm) {
   cancelBtn.addEventListener("click", function () {
     toDoForm.reset();
     toDoForm.style.display = "none";
+    newToDoBtn.style.display = "flex";
   });
 
   return [saveBtn, resetBtn, cancelBtn];
 }
 
-export function appendToDoFormButtons(toDoForm, buttons) {
+function appendToDoFormButtons(toDoForm, buttons) {
   buttons.forEach((button) => {
     toDoForm.appendChild(button);
   });
